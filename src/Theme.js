@@ -1,6 +1,6 @@
 export default {
   colors: {
-    black: '272928',
+    black: '#272928',
     white: '#fff',
     gold: '#a29060',
   },
