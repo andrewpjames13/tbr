@@ -2,10 +2,12 @@ import React, { useEffect, useState, createElement } from 'react';
 import axios from 'axios';
 import Box from 'Atoms/Box';
 import Text from 'Atoms/Text';
-import Section from 'Molecules/Section/Section';
+import Section from 'Molecules/Section';
+import AssetGrid from 'Molecules/AssetGrid';
 import Hero from 'components/Hero/Hero'
 
-const renderableComponents = { Section, Text }
+const renderableComponents = { Section, Text, AssetGrid }
+
 const App = () => {
   const [state, setState] = useState()
 
@@ -16,7 +18,7 @@ const App = () => {
     }
     fetch()
   }, [])
-  console.log(state)
+
   return (
     <>
       <Hero />

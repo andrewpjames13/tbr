@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { space, layout, color, typography, variant } from 'styled-system'
+import { space, layout, color, typography, variant, position } from 'styled-system'
 
 const TextStyled = styled.p`
   line-height: 1.65;
@@ -8,6 +8,7 @@ const TextStyled = styled.p`
   ${space}
   ${layout}
   ${typography}
+  ${position}
   ${variant({
     variants: {
       h1: {
@@ -28,12 +29,23 @@ const TextStyled = styled.p`
         textDecoration: 'underline',
         '&:hover': { color: 'white' },
       },
+      active: {
+        color: 'white',
+        fontFamily: 'body',
+        fontSize: 20,
+        cursor: 'pointer',
+        textDecoration: 'underline',
+        opacity: .75,
+        '&:hover': { opacity: .9 },
+      },
     }
   })}
 `
 
-const Text = ({ children, ...rest }) => (
-  <TextStyled as={rest.variant} {...rest}>{children}</TextStyled>
-)
-
+const Text = ({ children, ...rest }) => {
+  const asProp = rest.href ? { as: 'a' } : { as: rest.variant }
+  return (
+    <TextStyled {...asProp} {...rest}>{children}</TextStyled>
+  )
+}
 export default Text
