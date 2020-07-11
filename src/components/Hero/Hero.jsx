@@ -1,6 +1,5 @@
 import React from 'react';
 import Box from 'Atoms/Box';
-import Text from 'Atoms/Text';
 
 function Hero() {
   return (
@@ -14,9 +13,7 @@ function Hero() {
             backgroundImage: 'url("/images/ricepaper-texture.png")',
             opacity: .15,
           }}
-        >
-          <Text color='gold' as='h1' fontFamily="SeventiesPrinted">EPK</Text>
-        </Box>
+        />
         <Box
           position='absolute'
           top='50%'
