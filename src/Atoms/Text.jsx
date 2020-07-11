@@ -42,10 +42,13 @@ const TextStyled = styled.p`
   })}
 `
 
-const Text = ({ children, ...rest }) => {
-  const asProp = rest.href ? { as: 'a' } : { as: rest.variant }
-  return (
-    <TextStyled {...asProp} {...rest}>{children}</TextStyled>
-  )
+function asProp({ href, variant }) {
+  if (href || variant === 'active') return 'a'
+  return variant
 }
+
+const Text = ({ children, ...rest }) => (
+  <TextStyled as={asProp(rest)} {...rest}>{children}</TextStyled>
+)
+
 export default Text
