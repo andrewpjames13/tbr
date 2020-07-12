@@ -48,7 +48,14 @@ const Close = styled.svg`
 `
 
 const Link = ({ onClick, children, active }) => (
-  <Text variant={active ? 'active' : 'a'} onClick={onClick} mr={16} color='white'>{children}</Text>
+  <Text
+    variant={active ? 'active' : 'buttonLink'}
+    onClick={onClick}
+    mr={16}
+    color='white'
+  >
+    {children}
+  </Text>
 )
 
 const AssetGrid = ({ images }) => {

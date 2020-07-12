@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Box from 'Atoms/Box'
 
 const Svg = styled.svg`
   width: 50px;
@@ -10,7 +11,7 @@ const Svg = styled.svg`
 `
 
 const Contact = () => (
-  <>
+  <Box display='flex' alignItems='center' justifyContent='center'>
     <a href="mailto:thebornreadies@gmail.com?Subject=Howdy%20Doody" target="_top">
       <Svg viewBox="-20 -20 600 600">
         <path id="mail" d="M515.6,34.4H33.9l0.5,480.7l481.2,0.5V34.4z M414.2,174.3l-140,113.5l-140-113.5
@@ -53,7 +54,19 @@ const Contact = () => (
          M290.1,208.8v0.2l0.1-0.2H290.1z"/>
      </Svg>
     </a>
-  </>
+
+    <a href="https://www.youtube.com/channel/UCCTxsp0S8gW1lPlx01RwprQ" target="_blank">
+      <Svg
+        viewBox="0 0 24 24"
+        style={{
+          width: '41px',
+          height: '50px',
+          marginLeft: '3px',
+        }}
+      >
+        <path d="M10 9.333l5.333 2.662-5.333 2.672v-5.334zm14-9.333v24h-24v-24h24zm-4 12c-.02-4.123-.323-5.7-2.923-5.877-2.403-.164-7.754-.163-10.153 0-2.598.177-2.904 1.747-2.924 5.877.02 4.123.323 5.7 2.923 5.877 2.399.163 7.75.164 10.153 0 2.598-.177 2.904-1.747 2.924-5.877z"/></Svg>
+    </a>
+  </Box>
 )
 
 export default Contact

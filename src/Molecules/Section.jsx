@@ -14,7 +14,11 @@ const ChildBox = styled(Box)`
 
 const Section = ({ title, description, children, ...rest }) => {
   return (
-    <Box {...rest}>
+    <Box
+      maxWidth='80vw'
+      m='0 auto'
+      {...rest}
+    >
       <Text variant='h1'>{title}</Text>
       {description && <Text variant='p'>{description}</Text>}
       {children && <ChildBox my={3} display='flex' flexWrap='wrap'>
@@ -27,5 +31,5 @@ const Section = ({ title, description, children, ...rest }) => {
 export default Section;
 
 Section.defaultProps = {
-  mb: 100
+  py: 100
 }

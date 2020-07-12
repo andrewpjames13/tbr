@@ -29,6 +29,21 @@ const TextStyled = styled.p`
         textDecoration: 'underline',
         '&:hover': { color: 'white' },
       },
+      buttonLink: {
+        background: 'none',
+        border: 'none',
+        color: 'gold',
+        fontFamily: 'body',
+        fontSize: 20,
+        cursor: 'pointer',
+        textDecoration: 'underline',
+        '&:hover': { color: 'white' },
+      },
+      subHead: {
+        color: 'gold',
+        fontFamily: 'body',
+        fontSize: 20,
+      },
       active: {
         color: 'white',
         fontFamily: 'body',
@@ -43,12 +58,15 @@ const TextStyled = styled.p`
 `
 
 function asProp({ href, variant }) {
-  if (href || variant === 'active') return 'a'
-  return variant
+  if (!href && variant === 'a') return { variant: 'subHead' }
+  if (href || variant === 'active') return { as: 'a' }
+  return { as: variant }
 }
 
 const Text = ({ children, ...rest }) => (
-  <TextStyled as={asProp(rest)} {...rest}>{children}</TextStyled>
+  <TextStyled {...rest} {...asProp(rest)}>{children}</TextStyled>
 )
 
 export default Text
+
+Text.defaultProps = { variant: 'p' }
