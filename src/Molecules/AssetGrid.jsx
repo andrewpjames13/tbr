@@ -49,7 +49,7 @@ const Close = styled.svg`
 
 const Link = ({ onClick, children, active }) => (
   <Text
-    variant={active ? 'active' : 'buttonLink'}
+    variant={active ? 'active' : 'button'}
     onClick={onClick}
     mr={16}
     color='white'

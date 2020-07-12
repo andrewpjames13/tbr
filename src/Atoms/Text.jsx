@@ -29,7 +29,7 @@ const TextStyled = styled.p`
         textDecoration: 'underline',
         '&:hover': { color: 'white' },
       },
-      buttonLink: {
+      button: {
         background: 'none',
         border: 'none',
         color: 'gold',
@@ -59,7 +59,9 @@ const TextStyled = styled.p`
 
 function normalizer({ href, variant }) {
   if (!href && variant === 'a') return { variant: 'subHead' }
-  if (href || variant === 'active') return { as: 'a' }
+  let aRet = { as: 'a' }
+  if (variant === 'a') aRet = { ...aRet, target: '_blank' }
+  if (href || variant === 'active') return aRet
   return { as: variant }
 }
 
