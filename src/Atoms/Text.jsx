@@ -57,14 +57,14 @@ const TextStyled = styled.p`
   })}
 `
 
-function asProp({ href, variant }) {
+function normalizer({ href, variant }) {
   if (!href && variant === 'a') return { variant: 'subHead' }
   if (href || variant === 'active') return { as: 'a' }
   return { as: variant }
 }
 
 const Text = ({ children, ...rest }) => (
-  <TextStyled {...rest} {...asProp(rest)}>{children}</TextStyled>
+  <TextStyled {...rest} {...normalizer(rest)}>{children}</TextStyled>
 )
 
 export default Text
