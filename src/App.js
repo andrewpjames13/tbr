@@ -4,6 +4,7 @@ import Box from 'Atoms/Box';
 import Text from 'Atoms/Text';
 import Section from 'Molecules/Section';
 import AssetGrid from 'Molecules/AssetGrid';
+import AudioPlayer from 'Molecules/AudioPlayer';
 import Hero from 'components/Hero/Hero'
 import Border from 'components/Border/Border'
 import Contact from 'components/Contact/Contact'
@@ -54,6 +55,7 @@ const App = () => {
       <Border top={0} left={0} right={0} height={25} />
       <Border top={0} bottom={0} right={0} width={25} />
       <Border top={0} bottom={0} left={0} width={25} />
+      <AudioPlayer />
     </>
   );
 }
