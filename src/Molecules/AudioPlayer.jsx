@@ -21,6 +21,8 @@ const AudioPlayer = (props) => {
   const [checked, setChecked] = useState(true)
   const [play, setPlay] = useState(false)
   const [audio, setAudio] = useState(new Audio(props?.songs[songIndex]?.song?.filename))
+  audio.onended = () => nextSong()
+
   const songLength = props?.songs?.length - 1
 
   const playFunc = () => audio.play()
