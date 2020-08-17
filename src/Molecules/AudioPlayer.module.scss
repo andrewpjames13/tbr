@@ -59,18 +59,20 @@ $hamburger-spacing:8px;
   transition:transform 200ms;
 
   &.hamburgerOne{
+    opacity: 0;
     transform:translate3d(0,-$hamburger-spacing,0);
   }
-  &.hamburgerTwo{
-    transform:translate3d(0,0,0);
-  }
   &.hamburgerThree{
+    opacity: 0;
     transform:translate3d(0,$hamburger-spacing,0);
   }
 }
 
 .menuOpen {
   display:none;
+  svg {
+    opacity: 1;
+  }
 
   &:checked+.menuOpenButton{
     transition-timing-function:linear;
@@ -78,14 +80,14 @@ $hamburger-spacing:8px;
     transform:scale(0.8,0.8) translate3d(0,0,0);
 
     .hamburgerOne{
+      opacity: 1;
       transform:translate3d(0,0,0) rotate(45deg);
     }
-    .hamburgerTwo{
-      transform:translate3d(0,0,0) scale(0.1,1);
-    }
     .hamburgerThree{
+      opacity: 1;
       transform:translate3d(0,0,0) rotate(-45deg);
     }
+    svg { opacity: 0 }
   }
 
   &:checked~.menuItem{
