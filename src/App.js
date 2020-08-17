@@ -9,7 +9,7 @@ import Hero from 'components/Hero/Hero'
 import Border from 'components/Border/Border'
 import Contact from 'components/Contact/Contact'
 
-const renderableComponents = { Section, Text, AssetGrid }
+const renderableComponents = { Section, Text, AssetGrid, AudioPlayer }
 
 const App = () => {
   const [state, setState] = useState()
@@ -55,7 +55,6 @@ const App = () => {
       <Border top={0} left={0} right={0} height={25} />
       <Border top={0} bottom={0} right={0} width={25} />
       <Border top={0} bottom={0} left={0} width={25} />
-      <AudioPlayer />
     </>
   );
 }
