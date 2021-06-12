@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import { color } from 'styled-system'
 import Box from 'Atoms/Box';
 import Text from 'Atoms/Text';
+import { OpenAsset } from './OpenAsset'
 
-function transformImage(image, option) {
+export function transformImage(image, option) {
   var imageService = '//img2.storyblok.com/'
   var path = image.replace('https://a.storyblok.com', '')
   return imageService + option + path
@@ -43,10 +44,6 @@ const Button = styled.button`
   }
 `
 
-const Close = styled.svg`
-  ${color}
-`
-
 const Link = ({ onClick, children, active }) => (
   <Text
     variant={active ? 'active' : 'button'}
@@ -81,25 +78,7 @@ const AssetGrid = ({ images }) => {
         />
       ))}
       {state && (
-        <Box
-          backgroundColor='black'
-          position='fixed'
-          top='0'
-          right='0'
-          bottom='0'
-          left='0'
-          opacity='0.9'
-          display='flex'
-          alignItems='center'
-          justifyContent='center'
-          style={{ margin: 0, overflowY: 'scroll' }}
-          onClick={() => setState(null)}
-        >
-          <Text variant='a' position='absolute' top='50px' right= '50px'>
-            <Close fill='gold' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></Close>
-          </Text>
-          <img src={transformImage(state, quality)} alt={state} style={{ maxHeight: '80vh' }} />
-        </Box>
+        <OpenAsset state={state} quality={quality} close={() => setState(null)}/>
       )}
     </>
   );

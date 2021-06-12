@@ -8,6 +8,7 @@ import AudioPlayer from 'Molecules/AudioPlayer';
 import Hero from 'components/Hero/Hero'
 import Border from 'components/Border/Border'
 import Contact from 'components/Contact/Contact'
+import { Flex, Text as CText } from '@chakra-ui/react'
 
 const renderableComponents = { Section, Text, AssetGrid, AudioPlayer }
 
@@ -23,7 +24,7 @@ const App = () => {
     }
     fetch()
   }, [])
-
+  console.log(state?.data?.story?.content?.body)
   return (
     <>
       <Hero />

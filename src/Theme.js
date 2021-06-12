@@ -11,6 +11,10 @@ const colors = {
 
 export const theme = extendTheme({
   colors,
+  fonts: {
+    header: 'SeventiesPrinted',
+    body: 'helvetica'
+  },
   styles: {
     global: {
       body: {
