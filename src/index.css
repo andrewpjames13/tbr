@@ -31,6 +31,8 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
   background-color: #272928;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 ol, ul {
 	list-style: none;

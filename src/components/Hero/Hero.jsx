@@ -19,7 +19,7 @@ function Hero() {
           top='50%'
           left='50%'
           style={{ transform: 'translate(-50%, -50%)'}}
-          width='30vw'
+          width={{ _: '60vw', sm: '30vw' }}
         >
           <img
             src="/images/the-born-readies-logo.png"

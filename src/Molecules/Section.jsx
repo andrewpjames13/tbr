@@ -15,7 +15,7 @@ const ChildBox = styled(Box)`
 const Section = ({ title, description, children, ...rest }) => {
   return (
     <Box
-      maxWidth='80vw'
+      maxWidth={{ _: '70vw', sm: '80vw' }}
       m='0 auto'
       {...rest}
     >
@@ -31,7 +31,7 @@ const Section = ({ title, description, children, ...rest }) => {
 export default Section;
 
 Section.defaultProps = {
-  py: 100
+  py: { _: 25, sm: 100 }
 }
 
 // <div style={{position: 'fixed', zIndex: 99, width: '100%', height: '100%', top: 0, left: 0 }}>

@@ -103,10 +103,13 @@ $hamburger-spacing:8px;
 
 .menu{
   filter:url('#shadowed-goo');
-  $width:650px;
+  $width:320px;
   $height:105px;
   position:fixed;
-  left:41px;
+  left:22px;
+  @media screen and (min-width: 40em) {
+    left:41px;
+  }
   bottom:36px;
   width:$width;
   height:$height;
