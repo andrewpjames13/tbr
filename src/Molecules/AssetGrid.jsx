@@ -5,6 +5,7 @@ import { OpenAsset } from './OpenAsset'
 import { Grid, HStack, Text, Link as CLink, Center, GridItem } from '@chakra-ui/react'
 
 export function transformImage(image, option) {
+  if (!image) return ''
   var imageService = '//img2.storyblok.com/'
   var path = image.replace('https://a.storyblok.com', '')
   return imageService + option + path
@@ -73,7 +74,7 @@ const AssetGrid = ({ images }) => {
           <GridItem key={`${image._uid}`} colSpan={gridSpanner(index)}>
             <Button
               style={{
-                backgroundImage: `url("${transformImage(image.image.filename, 'filters:quality(100)')}")`
+                backgroundImage: `url("${transformImage(image.image.filename, `${gridSpanner(index)*300}x0/filters:quality(90)`)}")`
               }}
               onClick={() => setState(image.image.filename)}
               backgroundColor='black'

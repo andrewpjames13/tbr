@@ -1,7 +1,7 @@
 import React, { useEffect, useState, createElement } from 'react';
 import axios from 'axios';
 import Section from 'Molecules/Section';
-import AssetGrid from 'Molecules/AssetGrid';
+import AssetGrid, { transformImage } from 'Molecules/AssetGrid';
 import AudioPlayer from 'Molecules/AudioPlayer';
 import Hero from 'components/Hero/Hero'
 import Border from 'components/Border/Border'
@@ -42,7 +42,9 @@ const App = () => {
   const assets = state?.data?.story?.content?.body?.[3]
   const audio = state?.data?.story?.content?.body?.[4]
   const video = state?.data?.story?.content?.body?.[5]
-  console.log(video?.children?.[0])
+  // console.log(state?.data)
+  if (!state?.data) return null
+
   return (
     <>
       <Hero />
@@ -67,7 +69,7 @@ const App = () => {
         flexDirection='column'
         p={PADDING}
         _after={{
-          bgImage:about?.backgroundImage?.filename,
+          bgImage: `url("${transformImage(about?.backgroundImage?.filename, '1000x0/filters:quality(60)')}")`,
           bgSize:'cover',
           bgPosition: 'center top',
           opacity: 0.15,
@@ -121,7 +123,7 @@ const App = () => {
         position='relative'
         flexDirection='column'
         _after={{
-          bgImage: video?.children?.[0]?.backgroundImage?.filename,
+          bgImage: `url("${transformImage(video?.children?.[0]?.backgroundImage?.filename, '1000x0/filters:quality(60)')}")`,
           bgSize:'cover',
           opacity: 0.25,
           top: 0,
