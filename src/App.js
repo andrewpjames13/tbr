@@ -31,7 +31,8 @@ const App = () => {
   const articles = state?.data?.story?.content?.body?.[2]
   const assets = state?.data?.story?.content?.body?.[3]
   const audio = state?.data?.story?.content?.body?.[4]
-
+  const video = state?.data?.story?.content?.body?.[5]
+  console.log(video?.children?.[0])
   return (
     <>
       <Hero />
@@ -102,9 +103,9 @@ const App = () => {
         position='relative'
         flexDirection='column'
         _after={{
-          bgImage:'/images/mmhero.jpg',
+          bgImage: video?.children?.[0]?.backgroundImage?.filename,
           bgSize:'cover',
-          opacity: 0.15,
+          opacity: 0.25,
           top: 0,
           left: 0,
           bottom: 0,
@@ -119,7 +120,7 @@ const App = () => {
             <iframe
               width="100%"
               height="100%"
-              src="https://www.youtube.com/embed/q3r4jCnd_so?rel=0&autoplay=1&cc_load_policy=1&rel=0&showinfo=0"
+              src={`${video?.children?.[0]?.url}?rel=0&autoplay=1&cc_load_policy=1&rel=0&showinfo=0`}
               frameborder="0"
               allow="autoplay;"
               allowfullscreen="allowfullscreen"
