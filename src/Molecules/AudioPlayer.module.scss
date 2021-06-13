@@ -11,8 +11,8 @@ $opening-angle:$pi*2;
 %ball{
   background:$fg;
   border-radius:100%;
-  width:80px;
-  height:80px;
+  width:70px;
+  height:70px;
   position:absolute;
   top:20px;
   color:white;
@@ -49,7 +49,7 @@ $hamburger-spacing:8px;
   $height:3px;
   width:$width;
   height:$height;
-  background:white;
+  background:#272928;
   display:block;
   position:absolute;
   top:50%;
@@ -95,7 +95,7 @@ $hamburger-spacing:8px;
     @for $i from 1 through $menuItems{
       &:nth-child(#{$i+2}){
         transition-duration:90ms+(80ms*$i);
-        transform:translate3d((80px*$i),0,0);
+        transform:translate3d((70px*$i),0,0);
       }
     }
   }
@@ -107,10 +107,12 @@ $hamburger-spacing:8px;
   $height:105px;
   position:fixed;
   left:22px;
+  bottom:10px;
+
   @media screen and (min-width: 40em) {
     left:41px;
+    bottom:30px;
   }
-  bottom:36px;
   width:$width;
   height:$height;
   box-sizing:border-box;
