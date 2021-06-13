@@ -16,7 +16,7 @@ const PADDING = { base: '30px 20px', md: '30px 55px'}
 
 const Title = ({ title, description }) => (
   <Fade bottom>
-    <Text fontSize={{ base: '4xl', md: '6xl'}} color='brand.gold'>{title}</Text>
+    <Text fontSize={{ base: '4xl', md: '6xl'}} color='brand.gold' fontWeight='bold'>{title}</Text>
     <Text fontSize='lg' color='brand.gold' textAlign='center' maxW={{ base: '75vw', md: '50vw' }}>
       {description}
     </Text>
@@ -62,7 +62,6 @@ const App = () => {
           </Text>
         </Flex>
       </Grid> */}
-      
       <Center
         minH='75vh'
         position='relative'
@@ -125,7 +124,7 @@ const App = () => {
         _after={{
           bgImage: `url("${transformImage(video?.children?.[0]?.backgroundImage?.filename, '1000x0/filters:quality(60)')}")`,
           bgSize:'cover',
-          opacity: 0.25,
+          opacity: 0.5,
           top: 0,
           left: 0,
           bottom: 0,
