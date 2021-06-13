@@ -6,9 +6,10 @@ import AudioPlayer from 'Molecules/AudioPlayer';
 import Hero from 'components/Hero/Hero'
 import Border from 'components/Border/Border'
 import Contact from 'components/Contact/Contact'
-import { Flex, Box, Grid, Text, Center, Button, useDisclosure, Collapse, Link } from '@chakra-ui/react'
+import { Flex, Box, Grid, Text, Center, Button, useDisclosure, IconButton, AspectRatio } from '@chakra-ui/react'
 import { PlayIcon } from 'Atoms/PlayIcon'
 import Fade from 'react-reveal/Fade';
+import { CloseIcon } from '@chakra-ui/icons'
 
 const renderableComponents = { Section, Text, AssetGrid, AudioPlayer }
 
@@ -31,7 +32,6 @@ const App = () => {
   const assets = state?.data?.story?.content?.body?.[3]
   const audio = state?.data?.story?.content?.body?.[4]
 
-  console.log(state?.data?.story?.content?.body)
   return (
     <>
       <Hero />
@@ -96,7 +96,7 @@ const App = () => {
           </Fade>
         </Flex>
       </Center>
-
+      {/* Video */}
       <Center
         minH='75vh'
         position='relative'
@@ -114,21 +114,72 @@ const App = () => {
           content: '""'
         }}
       >
-        <Fade bottom>
-          <PlayIcon
-            w={100}
-            h={100}
-            fill='brand.gold'
-            transition='all 500ms ease'
-            _hover={{
-              cursor: 'pointer',
-              w: 110,
-              h:110
-            }}
-          />
-        </Fade>
+        {isOpen ? (
+          <>
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/q3r4jCnd_so?rel=0&autoplay=1&cc_load_policy=1&rel=0&showinfo=0"
+              frameborder="0"
+              allow="autoplay;"
+              allowfullscreen="allowfullscreen"
+              mozallowfullscreen="mozallowfullscreen" 
+              msallowfullscreen="msallowfullscreen" 
+              oallowfullscreen="oallowfullscreen" 
+              webkitallowfullscreen="webkitallowfullscreen"
+              style={{ height: '75vh', paddingLeft: '25px', paddingRight: '25px' }}
+            />
+          </>
+          ) : (
+            <Fade bottom>
+              <IconButton
+                bg='transparent'
+                _hover={{
+                  bg: 'transparent'
+                }}
+                onClick={onToggle}
+                icon={
+                  <PlayIcon
+                    w={100}
+                    h={100}
+                    fill='brand.gold'
+                    transition='all 500ms ease'
+                    _hover={{
+                      cursor: 'pointer',
+                      w: 110,
+                      h:110
+                    }}
+                />
+                }
+              />
+            </Fade>
+          )}
       </Center>
-
+      {/* {isOpen && (
+        <Center
+          bgColor='brand.black'
+          position='fixed'
+          top={0}
+          bottom={0}
+          left={0}
+          right={0}
+          zIndex={1}
+          onClick={onToggle}
+        >
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/q3r4jCnd_so?rel=0&autoplay=1&cc_load_policy=1&rel=0&showinfo=0"
+            frameborder="0"
+            allow="autoplay;"
+            allowfullscreen="allowfullscreen"
+            mozallowfullscreen="mozallowfullscreen" 
+            msallowfullscreen="msallowfullscreen" 
+            oallowfullscreen="oallowfullscreen" 
+            webkitallowfullscreen="webkitallowfullscreen"
+          />
+        </Center>
+      )} */}
       <Center minH='55vh' flexDirection='column'>
         <Fade bottom>
           <Text fontSize='6xl' color='brand.gold'>{articles?.title}</Text>
