@@ -11,7 +11,17 @@ import { PlayIcon } from 'Atoms/PlayIcon'
 import Fade from 'react-reveal/Fade';
 import { CloseIcon } from '@chakra-ui/icons'
 
-const renderableComponents = { Section, Text, AssetGrid, AudioPlayer }
+const renderableComponents = { Section, Text, AssetGrid, AudioPlayer } 
+const PADDING = { base: '30px 20px', md: '30px 55px'}
+
+const Title = ({ title, description }) => (
+  <Fade bottom>
+    <Text fontSize={{ base: '4xl', md: '6xl'}} color='brand.gold'>{title}</Text>
+    <Text fontSize='lg' color='brand.gold' textAlign='center' maxW={{ base: '75vw', md: '50vw' }}>
+      {description}
+    </Text>
+  </Fade>
+)
 
 const App = () => {
   const [state, setState] = useState()
@@ -50,14 +60,16 @@ const App = () => {
           </Text>
         </Flex>
       </Grid> */}
-
+      
       <Center
         minH='75vh'
         position='relative'
         flexDirection='column'
+        p={PADDING}
         _after={{
           bgImage:'/images/TBR-couch.jpg',
           bgSize:'cover',
+          bgPosition: 'center',
           opacity: 0.15,
           top: 0,
           left: 0,
@@ -68,18 +80,10 @@ const App = () => {
           content: '""'
         }}
       >
-        <Fade bottom>
-          <Text fontSize='6xl' color='brand.gold'>{about?.title}</Text>
-          <Text fontSize='lg' color='brand.gold' textAlign='center' maxW={{ base: '75vw', md: '50vw' }}>
-            {about?.description}
-          </Text>
-        </Fade>
+        <Title {...about} />
       </Center>
-      <Center minH='55vh' flexDirection='column'>
-        <Fade bottom>
-          <Text fontSize='6xl' color='brand.gold'>{heard?.title}</Text>
-          <Text fontSize='lg' color='brand.gold'>{heard?.description}</Text>
-        </Fade>
+      <Center minH='55vh' flexDirection='column' p={PADDING}>
+        <Title {...heard} />
         <Flex flexWrap='wrap' justifyContent='center' px={20} py={8}>
           <Fade bottom cascade>
             {heard?.children?.map(child => (
@@ -90,6 +94,7 @@ const App = () => {
                 color='brand.black'
                 mr={4}
                 mb={4}
+                fontSize={{ base: 'sm', md: 'md' }}
               >
                 {child?.children}
               </Button>
@@ -102,6 +107,7 @@ const App = () => {
         minH='75vh'
         position='relative'
         flexDirection='column'
+        p={PADDING}
         _after={{
           bgImage: video?.children?.[0]?.backgroundImage?.filename,
           bgSize:'cover',
@@ -181,11 +187,8 @@ const App = () => {
           />
         </Center>
       )} */}
-      <Center minH='55vh' flexDirection='column'>
-        <Fade bottom>
-          <Text fontSize='6xl' color='brand.gold'>{articles?.title}</Text>
-          <Text fontSize='lg' color='brand.gold'>{articles?.description}</Text>
-        </Fade>
+      <Center minH='55vh' flexDirection='column' p={PADDING}>
+        <Title {...articles} />
         <Flex flexWrap='wrap' justifyContent='center' px={20} py={8}>
           <Fade bottom cascade>
             {articles?.children?.map(child => (
@@ -196,6 +199,7 @@ const App = () => {
                 color='brand.black'
                 mr={4}
                 mb={4}
+                fontSize={{ base: 'sm', md: 'md' }}
               >
                 {child?.children}
               </Button>
@@ -204,15 +208,14 @@ const App = () => {
         </Flex>
       </Center>
       
-      <Box px={20}>
+      <Box p={PADDING}>
+        <Center>
+          <Title {...assets} />
+        </Center>
         <Fade bottom>
-          <Text fontSize='6xl' color='brand.gold'>{assets?.title}</Text>
-          <Text fontSize='lg' color='brand.gold'>{assets?.description}</Text>
+          <AssetGrid images={assets?.children?.[0]?.images ?? []} />
         </Fade>
       </Box>
-      <Fade bottom>
-        <AssetGrid images={assets?.children?.[0]?.images ?? []} />
-      </Fade>
       
       {audio && <AudioPlayer songs={audio} />}
       {/* <Center minH='55vh' flexDirection='column' py={40}>

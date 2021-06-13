@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components'
 import { color } from 'styled-system'
 import { OpenAsset } from './OpenAsset'
-import { Grid, HStack, Text, Link as CLink } from '@chakra-ui/react'
+import { Grid, HStack, Text, Link as CLink, Center } from '@chakra-ui/react'
 
 export function transformImage(image, option) {
   var imageService = '//img2.storyblok.com/'
@@ -39,6 +39,7 @@ const Link = ({ onClick, children, active }) => (
       textDecoration: active ? 'none' : 'underline',
       cursor: active ? 'default' : 'pointer' 
     }}
+    fontSize='lg'
   >
     {children}
   </CLink>
@@ -50,13 +51,16 @@ const AssetGrid = ({ images }) => {
 
   return (
     <>
-      <HStack width='100%' mt='16px' px={20}>
-        <Text mr={2} color='brand.gold'>Select Quality:</Text>
-        <Link onClick={() => setQuality('1000x0/filters:quality(100)')} active={quality.includes('1000')}>High</Link>
-        <Link onClick={() => setQuality('500x0/filters:quality(100)')} active={quality.includes('500')}>Medium</Link>
-        <Link onClick={() => setQuality('200x0/filters:quality(100)')} active={quality.includes('200')}>Low</Link>
-      </HStack>
-      <Grid templateColumns="repeat(4, 1fr)" gap={10} minH={500} px={20}>
+      <Center>
+        <HStack mb={4}>
+          <Text mr={2} color='brand.gold'>Select Quality:</Text>
+          <Link onClick={() => setQuality('1000x0/filters:quality(100)')} active={quality.includes('1000')}>High</Link>
+          <Link onClick={() => setQuality('500x0/filters:quality(100)')} active={quality.includes('500')}>Medium</Link>
+          <Link onClick={() => setQuality('200x0/filters:quality(100)')} active={quality.includes('200')}>Low</Link>
+        </HStack>
+      </Center>
+      
+      <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(4, 1fr)"}} gap={{ base: 5, md: 10 }} minH={500}>
         {images.map((image) => (
           <Button
             key={`${image._uid}`}

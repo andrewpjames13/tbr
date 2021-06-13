@@ -2,7 +2,7 @@ import React from 'react';
 import Box from 'Atoms/Box';
 
 const Border = props => (
-  <Box position='fixed' backgroundColor='white' {...props}>
+  <Box position='fixed' backgroundColor='white' display={{ base: 'none', md: 'unset' }} {...props}>
     <Box
       bg="white"
       style={{
