@@ -69,7 +69,7 @@ const App = () => {
         _after={{
           bgImage:about?.backgroundImage?.filename,
           bgSize:'cover',
-          bgPosition: 'center',
+          bgPosition: 'center top',
           opacity: 0.15,
           top: 0,
           left: 0,
@@ -80,7 +80,20 @@ const App = () => {
           content: '""'
         }}
       >
-        <Title {...about} />
+        <Center flexGrow={1} flexDirection='column'>
+          <Title {...about} />
+        </Center>
+        
+        {/* <Fade bottom cascade style={{ width: '100%' }}> */}
+        {/* <Text color='brand.gold' mt={10} textTransform='uppercase'>from left to right</Text> */}
+        <Flex w='full' flexDirection={{ base: 'column', md: 'row' }} justifyContent='space-around'>
+          <Text color='brand.gold' mx={4} textAlign='center'>Dan Putrino / Bass</Text>
+          <Text color='brand.gold' mx={4} textAlign='center'>Chris Rhea / Guitar & Vox</Text>
+          <Text color='brand.gold' mx={4} textAlign='center'>Andrew James / Drums</Text>
+          <Text color='brand.gold' mx={4} textAlign='center'>Bret Hagen / Guitar</Text>
+        </Flex>
+        {/* </Fade> */}
+
       </Center>
       <Center minH='55vh' flexDirection='column' p={PADDING}>
         <Title {...heard} />
@@ -107,7 +120,6 @@ const App = () => {
         minH='75vh'
         position='relative'
         flexDirection='column'
-        p={!isOpen && PADDING}
         _after={{
           bgImage: video?.children?.[0]?.backgroundImage?.filename,
           bgSize:'cover',
