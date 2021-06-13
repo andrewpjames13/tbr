@@ -56,7 +56,7 @@ const AssetGrid = ({ images }) => {
         <Link onClick={() => setQuality('500x0/filters:quality(100)')} active={quality.includes('500')}>Medium</Link>
         <Link onClick={() => setQuality('200x0/filters:quality(100)')} active={quality.includes('200')}>Low</Link>
       </HStack>
-      <Grid templateColumns="repeat(4, 1fr)" gap={10} minH={500} py={20} px={20}>
+      <Grid templateColumns="repeat(4, 1fr)" gap={10} minH={500} px={20}>
         {images.map((image) => (
           <Button
             key={`${image._uid}`}

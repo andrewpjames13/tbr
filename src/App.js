@@ -153,10 +153,15 @@ const App = () => {
       </Center>
       
       <Box px={20}>
-        <Text fontSize='6xl' color='brand.gold'>{assets?.title}</Text>
-        <Text fontSize='lg' color='brand.gold'>{assets?.description}</Text>
+        <Fade bottom>
+          <Text fontSize='6xl' color='brand.gold'>{assets?.title}</Text>
+          <Text fontSize='lg' color='brand.gold'>{assets?.description}</Text>
+        </Fade>
       </Box>
-      <AssetGrid images={assets?.children?.[0]?.images ?? []} />
+      <Fade bottom>
+        <AssetGrid images={assets?.children?.[0]?.images ?? []} />
+      </Fade>
+      
       {audio && <AudioPlayer songs={audio} />}
       {/* <Center minH='55vh' flexDirection='column' py={40}>
         <Fade bottom cascade>
@@ -233,7 +238,7 @@ const App = () => {
           </Center>
         </Flex>
       </Center> */}
-      <Box py={100}>
+      <Box pb={100}>
         {/* {state?.data?.story?.content?.body && (
           <>
             {state?.data?.story?.content?.body.map((data) => (
@@ -248,14 +253,16 @@ const App = () => {
             ))}
           </>
         )} */}
-        <Section>
-          <Box width='100%' display='flex' flexDirection='column'>
-            <Contact />
-            <Box display='flex' justifyContent='center' mt={2}>
-              <Text>{`© ${year} The Born Readies. All Rights Reserved.`}</Text>
+        <Center pb={20}>
+          <Fade bottom>
+            <Box width='100%' display='flex' flexDirection='column'>
+              <Contact />
+              <Box display='flex' justifyContent='center' mt={2}>
+                <Text>{`© ${year} The Born Readies. All Rights Reserved.`}</Text>
+              </Box>
             </Box>
-          </Box>
-        </Section>
+          </Fade>
+        </Center>
       </Box>
       <Border bottom={0} left={0} right={0} height={25} />
       <Border top={0} left={0} right={0} height={25} />
