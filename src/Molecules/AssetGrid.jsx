@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components'
 import { color } from 'styled-system'
 import { OpenAsset } from './OpenAsset'
-import { Grid, HStack, Text, Link as CLink, Center } from '@chakra-ui/react'
+import { Grid, HStack, Text, Link as CLink, Center, GridItem } from '@chakra-ui/react'
 
 export function transformImage(image, option) {
   var imageService = '//img2.storyblok.com/'
@@ -49,6 +49,14 @@ const AssetGrid = ({ images }) => {
   const [state, setState] = useState(null)
   const [quality, setQuality] = useState('1000x0/filters:quality(100)')
 
+  const gridSpanner = (index) => {
+    const remainder = images.length % 4
+    if (remainder === 1 && index === (images.length - 1)) return 4
+    if (remainder === 2 && (index === (images.length - 1) || index === (images.length - 2))) return 2
+    if (remainder === 3 && index === (images.length - 1)) return 2
+    return 1
+  }
+
   return (
     <>
       <Center>
@@ -61,15 +69,16 @@ const AssetGrid = ({ images }) => {
       </Center>
       
       <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(4, 1fr)"}} gap={{ base: 5, md: 10 }} minH={500}>
-        {images.map((image) => (
-          <Button
-            key={`${image._uid}`}
-            style={{
-              backgroundImage: `url("${transformImage(image.image.filename, 'filters:quality(100)')}")`
-            }}
-            onClick={() => setState(image.image.filename)}
-            backgroundColor='black'
-          />
+        {images.map((image, index) => (
+          <GridItem key={`${image._uid}`} colSpan={gridSpanner(index)}>
+            <Button
+              style={{
+                backgroundImage: `url("${transformImage(image.image.filename, 'filters:quality(100)')}")`
+              }}
+              onClick={() => setState(image.image.filename)}
+              backgroundColor='black'
+            />
+          </GridItem>
         ))}
       </Grid>
 
