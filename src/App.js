@@ -67,7 +67,7 @@ const App = () => {
         flexDirection='column'
         p={PADDING}
         _after={{
-          bgImage:'/images/TBR-couch.jpg',
+          bgImage:about?.backgroundImage?.filename,
           bgSize:'cover',
           bgPosition: 'center',
           opacity: 0.15,
@@ -107,7 +107,7 @@ const App = () => {
         minH='75vh'
         position='relative'
         flexDirection='column'
-        p={PADDING}
+        p={!isOpen && PADDING}
         _after={{
           bgImage: video?.children?.[0]?.backgroundImage?.filename,
           bgSize:'cover',
