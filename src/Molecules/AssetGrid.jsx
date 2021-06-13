@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
 import { color } from 'styled-system'
-import Box from 'Atoms/Box';
-import Text from 'Atoms/Text';
 import { OpenAsset } from './OpenAsset'
+import { Grid, HStack, Text, Link as CLink } from '@chakra-ui/react'
 
 export function transformImage(image, option) {
   var imageService = '//img2.storyblok.com/'
@@ -16,7 +15,7 @@ const Button = styled.button`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  width: calc(100% - 32px);
+  width: 100%;
   height: 38vh;
   float: left;
   opacity: 0.4;
@@ -30,29 +29,19 @@ const Button = styled.button`
     transform: scale(1.05)
   }
   &:focus { outline: none; }
-
-  @media only screen and (min-width: 700px) {
-    width: calc(50% - 32px);
-  }
-
-  @media only screen and (min-width: 1200px) {
-    width: calc(33.33% - 32px);
-  }
-
-  @media only screen and (min-width: 1500px) {
-    width: calc(25% - 32px);
-  }
 `
 
 const Link = ({ onClick, children, active }) => (
-  <Text
-    variant={active ? 'active' : 'button'}
+  <CLink
     onClick={onClick}
-    mr={16}
-    color='white'
+    color={active ? 'brand.white' : 'brand.gold' }
+    _hover={{
+      textDecoration: active ? 'none' : 'underline',
+      cursor: active ? 'default' : 'pointer' 
+    }}
   >
     {children}
-  </Text>
+  </CLink>
 )
 
 const AssetGrid = ({ images }) => {
@@ -61,22 +50,25 @@ const AssetGrid = ({ images }) => {
 
   return (
     <>
-      <Box width='100%' style={{ marginTop: '-16px' }}>
-        <Text variant='p' mr={2} style={{ display: 'inline' }}>Select Quality:</Text>
+      <HStack width='100%' mt='16px' px={20}>
+        <Text mr={2} color='brand.gold'>Select Quality:</Text>
         <Link onClick={() => setQuality('1000x0/filters:quality(100)')} active={quality.includes('1000')}>High</Link>
         <Link onClick={() => setQuality('500x0/filters:quality(100)')} active={quality.includes('500')}>Medium</Link>
         <Link onClick={() => setQuality('200x0/filters:quality(100)')} active={quality.includes('200')}>Low</Link>
-      </Box>
-      {images.map((image) => (
-        <Button
-          key={`${image._uid}`}
-          style={{
-            backgroundImage: `url("${transformImage(image.image.filename, 'filters:quality(100)')}")`
-          }}
-          onClick={() => setState(image.image.filename)}
-          backgroundColor='black'
-        />
-      ))}
+      </HStack>
+      <Grid templateColumns="repeat(4, 1fr)" gap={10} minH={500} py={20} px={20}>
+        {images.map((image) => (
+          <Button
+            key={`${image._uid}`}
+            style={{
+              backgroundImage: `url("${transformImage(image.image.filename, 'filters:quality(100)')}")`
+            }}
+            onClick={() => setState(image.image.filename)}
+            backgroundColor='black'
+          />
+        ))}
+      </Grid>
+
       {state && (
         <OpenAsset state={state} quality={quality} close={() => setState(null)}/>
       )}

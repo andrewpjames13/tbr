@@ -151,6 +151,11 @@ const App = () => {
           </Fade>
         </Flex>
       </Center>
+      
+      <Box px={20}>
+        <Text fontSize='6xl' color='brand.gold'>{assets?.title}</Text>
+        <Text fontSize='lg' color='brand.gold'>{assets?.description}</Text>
+      </Box>
       <AssetGrid images={assets?.children?.[0]?.images ?? []} />
       {audio && <AudioPlayer songs={audio} />}
       {/* <Center minH='55vh' flexDirection='column' py={40}>

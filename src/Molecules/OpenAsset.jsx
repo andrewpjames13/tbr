@@ -8,7 +8,7 @@ export const OpenAsset = ({ state, quality, close }) => {
    
     return (
         <Box
-          backgroundColor='black'
+          backgroundColor='brand.black'
           position='fixed'
           top='0'
           right='0'
@@ -22,7 +22,7 @@ export const OpenAsset = ({ state, quality, close }) => {
           onClick={close}
         >
           <Text variant='a' position='absolute' top='50px' right= '50px'>
-            <CloseIcon color='brand.gold' width="8" height="8" />
+            <CloseIcon color='brand.gold' width="8" height="8" _hover={{ cursor: 'pointer'  }} />
           </Text>
           {!loaded && (
             <Center color='gold' size='lg' position='fixed'>
